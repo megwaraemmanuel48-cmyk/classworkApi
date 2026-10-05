@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .user-card {
+      border: 1px solid #ccc;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+    }
+  </style>
+
+    <!-- <h1 id="message">welcome</h1>
+    <button id="btn">click me</button> -->
+<!-- <p id="text">hello students</p>
+<button id="btn">change style</button> -->
+<!-- <button id="btn">click me</button> -->
+
+<!-- <h1 id="message">Hello</h1>
+<button id="btn">click me</button> -->
+
+<!-- <input id="username" type="test">
+<p id="output"></p> -->
+<!-- 
+<h2>Login Form</h2>
+
+  <form>
+    <div>
+      <label for="username">Username: </label>
+      <input type="text" id="username" placeholder="Enter username">
+    </div>
+    <br>
+    <div>
+      <label for="password">Password: </label>
+      <input type="password" id="password" placeholder="Enter password">
+      <button type="button" id="toggleBtn">Show Password</button>
+    </div>
+    <br>
+    <button type="submit">Login</button>
+  </form>
+<br>
+<br>
+  <h2>Select Background Color</h2>
+
+  <button id="redBtn">Red</button>
+  <button id="blueBtn">Blue</button>
+  <button id="greenBtn">Green</button>
+
+  <br>
+  <br>
+  <h2>Simple Calculator</h2>
+
+  
+  <div>
+    <label for="num1">First Number:</label>
+    <input type="number" id="num1" placeholder="Enter first number">
+  </div>
+  <br>
+  <div>
+    <label for="num2">Second Number:</label>
+    <input type="number" id="num2" placeholder="Enter second number">
+  </div>
+  <br>
+
+  
+  <button id="addBtn">Add</button>
+  <button id="subtractBtn">Subtract</button>
+  <button id="multiplyBtn">Multiply</button>
+  <button id="divideBtn">Divide</button>
+
+  
+  <h3 id="result">Result: </h3> -->
+
+</head>
+<body>
+  <a href="about.html">about</a>
+
+  <h1>User Directory</h1>
+  <button id="loadUsersBtn">Load Users</button>
+
+  <div id="userContainer"></div>
+
+  <script>
+    document.getElementById('loadUsersBtn').addEventListener('click', () => {
+      fetch('http://localhost:3000/api/students')
+        .then(response => response.json())
+        .then(students => {
+          const container = document.getElementById('userContainer');
+          container.innerHTML = ''; 
+
+          students.forEach(student => {
+            const userCard = document.createElement('div');
+            userCard.className = 'user-card';
+            userCard.innerHTML = `
+              <h3>${student.name}</h3>
+              <p><strong>Email:</strong> ${student.deparment}</p>
+              <p><strong>City:</strong> ${student.level}</p>
+            `;
+            container.appendChild(userCard);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching users:', error);
+        });
+    });
+  </script>
+
+</body>
+</html>
+    <script src="main.js"></script>
